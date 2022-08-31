@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import About from './pages/About';
+import APIKEY from ",/config"
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': 'fd31333ffbmsha35464cd623f299p1bb0d6jsn8e9b07814618',
+        'X-RapidAPI-Key': APIKEY,
         'X-RapidAPI-Host': 'asos2.p.rapidapi.com'
       }
     };
