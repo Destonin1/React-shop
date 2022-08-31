@@ -1,0 +1,41 @@
+.header {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+  
+.header-block {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.menu {
+    width: 40%;
+}
+  
+.menu__links {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.menu__li {
+    margin-left: 20px;
+}
+  
+.menu__li:last-child {
+    margin-left: 0;
+}
+  
+.menu__link {
+    text-decoration: none;
+    font-size: 20px;
+    color: #34404b;
+}
+  
+.menu__link:hover {
+    color: #ff5912;
+}

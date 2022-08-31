@@ -1,0 +1,160 @@
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+    transition: 0.3s;
+}
+
+.modal_active {
+    opacity: 1;
+    z-index: 99;
+}
+
+.modal-basket_active {
+    opacity: 1;
+    z-index: 50;
+}
+
+.modal-bg {
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.6;
+}
+
+.modal-block {
+    padding: 20px 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: top left;
+    border: 1px solid #000;
+    background-color: #fff;
+    border-radius: 5px;
+    z-index: 10;
+    scale: 0;
+    transition: 0.3s;
+}
+
+.basket-modal-block {
+    width: 950px;
+}
+
+.modal-block_active {
+    scale: 1;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    font-size: 24px;
+}
+
+.modal-close {
+    font-size: 36px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.modal-close:hover {
+    color: #ff5912;
+}
+    
+.modal-body {
+    padding: 20px 40px;
+    max-height: 600px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 100%;
+    justify-items: center;
+    gap: 50px;
+}
+
+.modal-text {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.modal__empty-text {
+    font-size: 24px;
+    margin: 20px auto 20px 0;
+}
+
+.modal-footer {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(calc(100% / 5 -20px));
+    grid-template-rows: 50px;
+    gap: 20px;
+}
+
+.modal-footer-small {
+    justify-content: center;
+}
+
+.btn-modal {
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    min-width: 120px;
+}
+
+.btn-modal:hover {
+    opacity: 0.8;
+}
+
+.btn-accept {
+    grid-column: 1;
+    background-color: #09a022;
+    color: #fff;
+}
+
+.btn-cancel {
+    grid-column: 2;
+    background-color: #cd0000;
+    color: #fff;
+}
+
+.btn-close {
+    grid-column: 1;
+    background-color: #edf0f2;
+}
+
+.btn-clear {
+    grid-column: 2;
+    background-color: #cd0000;
+    color: #fff;
+}
+
+.btn-order {
+    grid-column: 5;
+    background-color: #ff5912;
+    color: #fff;
+}
+
+.total-block {
+    grid-column: 4 / 5;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    min-width: 200px;
+}
+
+.total-block__price {
+    font-weight: 700;
+    color: #ff5912;
+}

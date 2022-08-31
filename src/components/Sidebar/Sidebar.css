@@ -1,0 +1,72 @@
+.sidebar {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 50px;
+}
+  
+.sidebar__item {
+    background-color: #fff;
+    padding: 20px 40px;
+}
+  
+.sidebar__item-title {
+    font-family: "HarmoniaB", sans-serif;
+    font-size: 20px;
+    color: #ff5912;
+    margin-bottom: 30px;
+}
+  
+.sidebar__label {
+    display: block;
+    margin-bottom: 20px;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+  
+.sidebar__label::before {
+    content: " ";
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background: #edf0f2;
+    margin-right: 20px;
+    box-sizing: border-box;
+}
+  
+.sidebar__input:checked+label::before {
+    border: 4px solid #ff5912;
+}
+  
+.sidebar__input {
+    display: none;
+}
+  
+.sidebar__form-price {
+    display: grid;
+    align-items: center;
+    row-gap: 10px;
+    grid-template-columns: auto auto auto;
+}
+  
+.sidebar__input-number {
+    display: inline-block;
+    max-width: 60px;
+    font-size: 16px;
+    padding: 2px;
+}
+  
+.sidebar__input-label {
+    display: block;
+    margin-right: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+  
+.sidebar__dash {
+    display: inline-block;
+    margin: 0 5px;
+}
