@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/react-shop/static/css/main.f79cb70f.css",
+    "main.js": "/react-shop/static/js/main.72c85088.js",
+    "static/media/HarmoniaSansProCyr-Regular.ttf": "/react-shop/static/media/HarmoniaSansProCyr-Regular.71b670bb43e39c1969cd.ttf",
+    "static/media/HarmoniaSansProCyr-Black.otf": "/react-shop/static/media/HarmoniaSansProCyr-Black.550773cfc5781b1c1625.otf",
+    "static/media/unnamed.png": "/react-shop/static/media/unnamed.3616cce790385badb93b.png",
+    "static/media/mastercard.svg": "/react-shop/static/media/mastercard.7e382641945ed06d562105bacd9bb6aa.svg",
+    "static/media/maestro.svg": "/react-shop/static/media/maestro.98c576ca1f42490075f4d2d4fb498e63.svg",
+    "static/media/paypal.svg": "/react-shop/static/media/paypal.6f336cbab77fff4786ddab17df365597.svg",
+    "static/media/visa.svg": "/react-shop/static/media/visa.ae3d6ce0aed886144be433ca00ce2fe0.svg",
+    "static/media/basket.svg": "/react-shop/static/media/basket.4b200598e6feebe30a60ca5d7bbf15fa.svg",
+    "index.html": "/react-shop/index.html",
+    "main.f79cb70f.css.map": "/react-shop/static/css/main.f79cb70f.css.map",
+    "main.72c85088.js.map": "/react-shop/static/js/main.72c85088.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f79cb70f.css",
+    "static/js/main.72c85088.js"
+  ]
+}
