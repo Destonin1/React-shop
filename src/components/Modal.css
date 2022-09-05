@@ -84,6 +84,7 @@
 .modal-text {
     font-size: 24px;
     font-weight: 700;
+    text-align: center;
 }
 
 .modal__empty-text {
@@ -94,9 +95,9 @@
 .modal-footer {
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(calc(100% / 5 -20px));
     grid-template-rows: 50px;
     gap: 20px;
+    align-items: center;
 }
 
 .modal-footer-small {
@@ -110,6 +111,7 @@
     font-size: 20px;
     border: none;
     min-width: 120px;
+    max-width: 150px;
 }
 
 .btn-modal:hover {
@@ -147,14 +149,86 @@
 
 .total-block {
     grid-column: 4 / 5;
-    padding: 10px 15px;
-    border-radius: 5px;
     font-size: 20px;
     font-weight: 700;
-    min-width: 200px;
+    white-space: nowrap;
 }
 
 .total-block__price {
     font-weight: 700;
     color: #ff5912;
+}
+
+@media screen and (max-width: 1250px) {
+    
+    .modal-block {
+        width: 80%;
+    }
+
+    .basket-modal-block {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    
+    .modal-footer {
+        grid-template-rows: 50px;
+        gap: 20px;
+    }
+
+    .btn-modal {
+        padding: 10px 12px;
+        font-size: 18px;
+        min-width: 80px;
+    }
+
+    .total-block {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+
+    .modal-block {
+        padding: 10px 15px;
+    }
+
+    .modal-title {
+        font-size: 20px;
+    }
+    
+    .modal-body {
+        padding: 10px 20px;
+        max-height: 60vh;
+    }
+
+    .modal-footer {
+        grid-template-rows: auto;
+        grid-template-columns: 45% 45%;
+    }
+
+    .btn-close {
+        grid-column: 1;
+        background-color: #edf0f2;
+    }
+
+    .btn-clear {
+        grid-column: 2;
+        background-color: #cd0000;
+        color: #fff;
+    }
+
+    .total-block {
+        grid-column: 1;
+        font-size: 20px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .btn-order {
+        grid-column: 2;
+        background-color: #ff5912;
+        color: #fff;
+    }
 }

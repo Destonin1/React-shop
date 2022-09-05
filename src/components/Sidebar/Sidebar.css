@@ -35,6 +35,10 @@
     margin-right: 20px;
     box-sizing: border-box;
 }
+
+.sidebar__form-item:hover ~ .sidebar__label{
+    background-color: red;
+}
   
 .sidebar__input:checked+label::before {
     border: 4px solid #ff5912;
@@ -69,4 +73,51 @@
 .sidebar__dash {
     display: inline-block;
     margin: 0 5px;
+}
+
+@media screen and (max-width: 1250px) {
+
+    .sidebar__item {
+        padding: 15px 20px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+
+    .sidebar {
+        grid-template-columns: auto auto;
+        align-items: start;
+    }
+
+    .sidebar__form-checkbox {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-columns: max-content;
+        gap: 20px;
+    }
+
+    .sidebar__label::before {
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    
+    .sidebar {
+        grid-template-columns: auto;
+        gap: 20px;
+        justify-items: center;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .sidebar__item {
+        padding: 10px 20px;
+    }
+    
+    .sidebar__form-checkbox {
+        grid-template-columns: 1fr 1fr;
+    }
 }

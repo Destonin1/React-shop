@@ -35,7 +35,9 @@ const Catalog = () =>  {
               <div className='section-content'>
                   <h2 className="section-title">Shopy <span className="title-span"> catalog</span></h2>
                   <div className="catalog-block">
-                    <Sidebar setOptions = {setSidebarOptions}/>
+                    <Sidebar 
+                      setOptions = {setSidebarOptions}
+                    />
                     
                     {
                       dataContent.length === 0 ?

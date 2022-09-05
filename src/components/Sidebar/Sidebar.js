@@ -71,10 +71,10 @@ const Sidebar = (props) =>  {
     });
   }
 
-  const updateBrands = (e) => {
-    let newArray = [...chosenBrands, e.target.value];
-    if (chosenBrands.includes(e.target.value)) {
-      newArray = newArray.filter(brand => brand !== e.target.value);
+  const updateBrands = (item) => {
+    let newArray = [...chosenBrands, item];
+    if (chosenBrands.includes(item)) {
+      newArray = newArray.filter(brand => brand !== item);
     }
     setChosenBrands(newArray);
   }

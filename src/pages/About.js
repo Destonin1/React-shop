@@ -1,6 +1,6 @@
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import aboutImg from '../img/unnamed.png';
+import aboutImg from '../img/shopy.png';
 
 const About = () =>  {
   return (
@@ -21,7 +21,7 @@ const About = () =>  {
                     </p>
                     <p className='about__text'>
                       The pride of our store are professional consultants who work for you 7 days a week. Each of them has passed a multi-level 
-                      training program from the Tikkurila Group concern and will be able to choose the optimal coverage for your interior and comfort.
+                      training program and will be able to choose the optimal coverage for your interior and comfort.
                     </p>
                     <p className='about__text'>
                       We are always working to improve the service, the convenience of choosing and placing an order.

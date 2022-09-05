@@ -1,9 +1,29 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import { useState, useEffect } from "react"
 import "./Header.css";
 import logo from "../../img/logo.png";
+import burger from "../../img/menu-burger.svg";
+import closeSvg from "../../img/close.svg";
 import Basket from "../Basket/Basket";
 
 const Header = () =>  {
+
+    const [matches, setMatches] = useState(
+        window.matchMedia("(min-width: 750px)").matches
+    )
+
+    const [openMenu, setOpenMenu] = useState(false)
+
+    const toggleMenu = () => {
+        setOpenMenu(!openMenu);
+    }
+    
+    useEffect(() => {
+        window
+        .matchMedia("(min-width: 750px)")
+        .addEventListener('change', e => setMatches( e.matches ));
+    }, []);
+
   return (
     <header className="header">
         <div className="container">
@@ -12,15 +32,18 @@ const Header = () =>  {
                     <img src={logo} alt="logo"/>
                 </Link>
                 <nav className="menu">
-                    <ul className="menu__links">
+                    {matches ? "" :
+                        openMenu ? <img className="menu-icon" src={closeSvg} onClick={toggleMenu} alt="menu"/> : <img className="menu-icon" src={burger} onClick={toggleMenu} alt="menu"/>
+                    }
+                    <ul className={openMenu ? "menu__links_open menu__links" : "menu__links"}>
                         <li className="menu__li">
-                            <Link to='/' className="menu__link">Home</Link>
+                            <NavLink to='/' className={({ isActive }) => (isActive ? "menu__link link_active" : "menu__link")}>Home</NavLink>
                         </li>
                         <li className="menu__li">
-                            <Link to='/catalog' className="menu__link">Catalog</Link>
+                            <NavLink to='/catalog' className={({ isActive }) => (isActive ? "menu__link link_active" : "menu__link")}>Catalog</NavLink>
                         </li>
                         <li className="menu__li">
-                            <Link to='/about' className="menu__link">About</Link>
+                            <NavLink to='/about'  className={({ isActive }) => (isActive ? "menu__link link_active" : "menu__link")}>About</NavLink>
                         </li>
                     </ul>
                 </nav>
