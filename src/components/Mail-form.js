@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { myModal } from "./Modal";
+import "./Mail-form.css"
 import letterImg from "../img/mail.png";
 
 const MailForm = () =>  {

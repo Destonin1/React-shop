@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import About from './pages/About';
-import APIKEY from ",/config"
+import APIKEY from "./config"
 
 function App() {
 

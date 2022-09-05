@@ -13,7 +13,7 @@ const BasketItem = (props) =>  {
         <input className="quantity__input" type="number" value={quantity} onChange={(e) => onChangeQuantity(e.target.value, id)}/>
         <button className="quantity__btn quantity__add" onClick={() => onClickAdd(quantity, id)}>+</button>
       </div>
-      <span className="basket-item__price">{price * quantity}$</span>
+      <span className="basket-item__price">{(price * quantity).toFixed(2)}$</span>
       <button className="basket-item__delete" onClick={()=>{onClickDelete(id)}}>Remove</button>
     </div>
   );

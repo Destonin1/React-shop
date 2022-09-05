@@ -109,8 +109,9 @@ const Basket = () =>  {
     useEffect(() => {
         let total = 0;
         basketItems.forEach((item) => {
-            total += item.price * item.quantity;
+            total += (item.price * item.quantity);
         })
+        total = total.toFixed(2).replace(/[.,]00$/, "");
         setTotalPrice(total);
     },[basketItems])
 

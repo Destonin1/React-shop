@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ContentData } from '../Contexts/Content';
 import "./Product.css";
 
@@ -8,6 +8,16 @@ const Product = (props) =>  {
 
     const { setBasketItemId } = useContext(ContentData)
 
+    const [matches, setMatches] = useState(
+        window.matchMedia("(min-width: 750px)").matches
+    )
+    
+    useEffect(() => {
+        window
+        .matchMedia("(min-width: 750px)")
+        .addEventListener('change', e => setMatches( e.matches ));
+    }, []);
+
     const buyClick = (e) => {
         const id = Number(e.currentTarget.id);
         setBasketItemId(id);
@@ -15,11 +25,13 @@ const Product = (props) =>  {
 
   return (
     <div className="product">
+        {!matches ? "":            
         <div className="product__front">
             <img className="product__image" src={"https://" + image} alt="jeans"/>
             <p className="product__name">{name}</p>
             <span className="product__price">{price}$</span>
         </div>
+        }
         <div className="product__hover">
             <img className="product__image_hover" src={"https://" + image} alt="jacket"/>
             <p className="product__name product__name_hover">{name}</p>
