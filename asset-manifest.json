@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.d4a3f336.css",
-    "main.js": "/static/js/main.d30156dc.js",
-    "static/media/HarmoniaSansProCyr-Regular.ttf": "/static/media/HarmoniaSansProCyr-Regular.71b670bb43e39c1969cd.ttf",
-    "static/media/HarmoniaSansProCyr-Black.otf": "/static/media/HarmoniaSansProCyr-Black.550773cfc5781b1c1625.otf",
-    "static/media/shopy.png": "/static/media/shopy.970f83adf51171f49ab9.png",
-    "static/media/mastercard.svg": "/static/media/mastercard.7e382641945ed06d562105bacd9bb6aa.svg",
-    "static/media/maestro.svg": "/static/media/maestro.98c576ca1f42490075f4d2d4fb498e63.svg",
-    "static/media/paypal.svg": "/static/media/paypal.6f336cbab77fff4786ddab17df365597.svg",
-    "static/media/visa.svg": "/static/media/visa.ae3d6ce0aed886144be433ca00ce2fe0.svg",
-    "static/media/close.svg": "/static/media/close.3fb8527d2db71a71a6505f245a9529dd.svg",
-    "static/media/basket.svg": "/static/media/basket.4b200598e6feebe30a60ca5d7bbf15fa.svg",
-    "static/media/menu-burger.svg": "/static/media/menu-burger.cbafd619d2f8ad62ec01b976fe64e7d2.svg",
-    "index.html": "/index.html",
-    "main.d4a3f336.css.map": "/static/css/main.d4a3f336.css.map",
-    "main.d30156dc.js.map": "/static/js/main.d30156dc.js.map"
+    "main.css": "/React-shop/static/css/main.413414ec.css",
+    "main.js": "/React-shop/static/js/main.7178fca0.js",
+    "static/media/HarmoniaSansProCyr-Regular.ttf": "/React-shop/static/media/HarmoniaSansProCyr-Regular.71b670bb43e39c1969cd.ttf",
+    "static/media/HarmoniaSansProCyr-Black.otf": "/React-shop/static/media/HarmoniaSansProCyr-Black.550773cfc5781b1c1625.otf",
+    "static/media/shopy.png": "/React-shop/static/media/shopy.970f83adf51171f49ab9.png",
+    "static/media/mastercard.svg": "/React-shop/static/media/mastercard.7e382641945ed06d562105bacd9bb6aa.svg",
+    "static/media/maestro.svg": "/React-shop/static/media/maestro.98c576ca1f42490075f4d2d4fb498e63.svg",
+    "static/media/paypal.svg": "/React-shop/static/media/paypal.6f336cbab77fff4786ddab17df365597.svg",
+    "static/media/visa.svg": "/React-shop/static/media/visa.ae3d6ce0aed886144be433ca00ce2fe0.svg",
+    "static/media/close.svg": "/React-shop/static/media/close.3fb8527d2db71a71a6505f245a9529dd.svg",
+    "static/media/basket.svg": "/React-shop/static/media/basket.4b200598e6feebe30a60ca5d7bbf15fa.svg",
+    "static/media/menu-burger.svg": "/React-shop/static/media/menu-burger.cbafd619d2f8ad62ec01b976fe64e7d2.svg",
+    "index.html": "/React-shop/index.html",
+    "main.413414ec.css.map": "/React-shop/static/css/main.413414ec.css.map",
+    "main.7178fca0.js.map": "/React-shop/static/js/main.7178fca0.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4a3f336.css",
-    "static/js/main.d30156dc.js"
+    "static/css/main.413414ec.css",
+    "static/js/main.7178fca0.js"
   ]
 }
