@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/React-shop/static/css/main.413414ec.css",
-    "main.js": "/React-shop/static/js/main.4dc2c6ff.js",
+    "main.js": "/React-shop/static/js/main.6490a5e4.js",
     "static/media/HarmoniaSansProCyr-Regular.ttf": "/React-shop/static/media/HarmoniaSansProCyr-Regular.71b670bb43e39c1969cd.ttf",
     "static/media/HarmoniaSansProCyr-Black.otf": "/React-shop/static/media/HarmoniaSansProCyr-Black.550773cfc5781b1c1625.otf",
     "static/media/shopy.png": "/React-shop/static/media/shopy.970f83adf51171f49ab9.png",
@@ -14,10 +14,10 @@
     "static/media/menu-burger.svg": "/React-shop/static/media/menu-burger.cbafd619d2f8ad62ec01b976fe64e7d2.svg",
     "index.html": "/React-shop/index.html",
     "main.413414ec.css.map": "/React-shop/static/css/main.413414ec.css.map",
-    "main.4dc2c6ff.js.map": "/React-shop/static/js/main.4dc2c6ff.js.map"
+    "main.6490a5e4.js.map": "/React-shop/static/js/main.6490a5e4.js.map"
   },
   "entrypoints": [
     "static/css/main.413414ec.css",
-    "static/js/main.4dc2c6ff.js"
+    "static/js/main.6490a5e4.js"
   ]
 }
