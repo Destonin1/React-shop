@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { ContentData } from './Contexts/Content';
 import { useState, useEffect } from 'react'
 import Home from './pages/Home';
@@ -54,13 +54,13 @@ function App() {
   return (
     <div>
       <ContentData.Provider value={{ dataContent, setDataContent, basketItemId, setBasketItemId }}>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
               <Route exact path="/" element={<Home/>}/>
               <Route path="/catalog" element={<Catalog/>}/>
               <Route path="/about" element={<About/>}/>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </ContentData.Provider>
     </div>
   );

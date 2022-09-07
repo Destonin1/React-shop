@@ -1,6 +1,6 @@
 const SidebarItemPrice = (props) =>  {
 
-    const {title, minPrice, onChangeMin, maxPrice, onChangeMax} = props;
+    const {title, minPrice, onChangeMin, maxPrice, onChangeMax, onSubmit} = props;
 
     return (
         <div className="sidebar__item">
@@ -12,6 +12,7 @@ const SidebarItemPrice = (props) =>  {
                 <label className="sidebar__input-label">Maximum:</label>
                 <input className="sidebar__input-number" type="number" onChange = {onChangeMax} value={maxPrice} name="max"/>
                 <span className="sidebar__input-currency">$</span>
+                <button className="sidebar__ok" onClick = {onSubmit}>Ok</button>
             </form>
         </div>
     );

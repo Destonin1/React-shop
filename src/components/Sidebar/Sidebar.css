@@ -54,6 +54,23 @@
     row-gap: 10px;
     grid-template-columns: auto auto auto;
 }
+
+.sidebar__ok {
+    grid-column: 2 / 3;
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: #ff5912;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 60px;
+    margin-right: auto;
+}
+
+.sidebar__ok:hover {
+    opacity: 0.9;
+}
   
 .sidebar__input-number {
     display: inline-block;
@@ -119,5 +136,22 @@
     
     .sidebar__form-checkbox {
         grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .sidebar__item {
+        width: 100%;
+    }
+
+    .sidebar__item {
+        padding: 10px 20px;
+    }
+    
+    .sidebar__form-checkbox {
+        grid-template-columns: 1fr;
+        gap: 0;
+        column-gap: 10px;
     }
 }

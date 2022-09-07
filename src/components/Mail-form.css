@@ -41,3 +41,13 @@
 .letter__form-submit:hover {
     opacity: 0.9;
 }
+
+@media screen and (max-width: 360px) {
+    .letter__form-submit {
+        margin-top: 10px;
+    }
+
+    .mail-img {
+        margin-left: 30px;
+    }
+}

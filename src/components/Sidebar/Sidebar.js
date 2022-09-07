@@ -11,6 +11,8 @@ const Sidebar = (props) =>  {
   const { dataContent } = useContext(ContentData);
 
   const [pricesMinMax, setPricesMinMax] = useState([0,100]);
+  const [pricesMin, setPricesMin] = useState(pricesMinMax[0]);
+  const [pricesMax, setPricesMax] = useState(pricesMinMax[1]);
 
   const [brands, setBrands] = useState("");
   const [chosenBrands, setChosenBrands] = useState([]);
@@ -39,36 +41,43 @@ const Sidebar = (props) =>  {
       pricesInit.push(item.price);
     })
     setBrands(brandsInit);
-    setPricesMinMax(findMinMax(pricesInit))
+    const minMax = findMinMax(pricesInit);
+    setPricesMin(minMax[0]);
+    setPricesMax(minMax[1]);
+    setPricesMinMax(minMax);
   }
 
-  const updatePriceMin = (e) => {
-    let newPrice = 0;
-    if(e.target.value !== ""){
-      if(e.target.value > pricesMinMax[1]) {
-        newPrice = pricesMinMax[1];
+  const changePriceMin = (e) => {
+    setPricesMin(e.target.value);
+  }
+
+  const changePriceMax = (e) => {
+    setPricesMax(e.target.value);
+  }
+
+  const updatePrices = (e) => {
+    e.preventDefault();
+
+    let newPriceMin = 0;
+    if(pricesMin !== ""){
+      if(pricesMin > pricesMax) {
+        newPriceMin = pricesMax;
       }
       else {
-        newPrice = e.target.value;
+        newPriceMin = pricesMin;
       }
     }
-    setPricesMinMax((prevState)=> {
-      return [newPrice, prevState[1]]
-    });
-  }
 
-  const updatePriceMax = (e) => {
-    let newPrice = 0;
-    if(e.target.value < pricesMinMax[0]){
-      newPrice = pricesMinMax[0];
+    let newPriceMax = 0;
+    if(pricesMax < pricesMinMax[0]){
+      newPriceMax = pricesMinMax[0];
     }
     else {
-      newPrice = e.target.value;
+      newPriceMax = pricesMax;
 
     }
-    setPricesMinMax((prevState)=> {
-      return [prevState[0], newPrice]
-    });
+    
+    setPricesMinMax([newPriceMin, newPriceMax]);
   }
 
   const updateBrands = (item) => {
@@ -104,10 +113,11 @@ const Sidebar = (props) =>  {
         />
         <SidebarItemPrice 
           title = "Price"
-          minPrice = {pricesMinMax[0]}
-          onChangeMin = {updatePriceMin}
-          maxPrice = {pricesMinMax[1]}
-          onChangeMax = {updatePriceMax}
+          minPrice = {pricesMin}
+          onChangeMin = {changePriceMin}
+          maxPrice = {pricesMax}
+          onChangeMax = {changePriceMax}
+          onSubmit = {updatePrices}
         />
     </div>
   );
