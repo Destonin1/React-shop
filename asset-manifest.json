@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/React-shop/static/css/main.bcfe3848.css",
-    "main.js": "/React-shop/static/js/main.2ebc5f60.js",
+    "main.css": "/React-shop/static/css/main.2d15a3fd.css",
+    "main.js": "/React-shop/static/js/main.6609bb53.js",
     "static/media/online.jpg": "/React-shop/static/media/online.6182e7cfdc78d792cfed.jpg",
-    "static/media/HarmoniaSansProCyr-Regular.ttf": "/React-shop/static/media/HarmoniaSansProCyr-Regular.71b670bb43e39c1969cd.ttf",
-    "static/media/HarmoniaSansProCyr-Black.otf": "/React-shop/static/media/HarmoniaSansProCyr-Black.550773cfc5781b1c1625.otf",
+    "static/media/Roboto-Regular.ttf": "/React-shop/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/Roboto-Bold.ttf": "/React-shop/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
     "static/media/mastercard.svg": "/React-shop/static/media/mastercard.7e382641945ed06d562105bacd9bb6aa.svg",
     "static/media/maestro.svg": "/React-shop/static/media/maestro.98c576ca1f42490075f4d2d4fb498e63.svg",
     "static/media/paypal.svg": "/React-shop/static/media/paypal.6f336cbab77fff4786ddab17df365597.svg",
@@ -13,11 +13,11 @@
     "static/media/basket.svg": "/React-shop/static/media/basket.4b200598e6feebe30a60ca5d7bbf15fa.svg",
     "static/media/menu-burger.svg": "/React-shop/static/media/menu-burger.cbafd619d2f8ad62ec01b976fe64e7d2.svg",
     "index.html": "/React-shop/index.html",
-    "main.bcfe3848.css.map": "/React-shop/static/css/main.bcfe3848.css.map",
-    "main.2ebc5f60.js.map": "/React-shop/static/js/main.2ebc5f60.js.map"
+    "main.2d15a3fd.css.map": "/React-shop/static/css/main.2d15a3fd.css.map",
+    "main.6609bb53.js.map": "/React-shop/static/js/main.6609bb53.js.map"
   },
   "entrypoints": [
-    "static/css/main.bcfe3848.css",
-    "static/js/main.2ebc5f60.js"
+    "static/css/main.2d15a3fd.css",
+    "static/js/main.6609bb53.js"
   ]
 }
