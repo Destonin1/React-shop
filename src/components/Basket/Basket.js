@@ -69,7 +69,7 @@ const Basket = () =>  {
         if(basketItems.length !== 0) {
             myModal({
                 title: "",
-                text: "Sorry but it is just a demo version",
+                text: "Sorry, but it is just a demo version",
                 onlyOkBtn : true
               })
               .catch(() => {})

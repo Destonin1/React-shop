@@ -10,7 +10,7 @@
 }
   
 .sidebar__item-title {
-    font-family: "HarmoniaB", sans-serif;
+    font-family: "RobotoB", sans-serif;
     font-size: 20px;
     color: #ff5912;
     margin-bottom: 30px;
@@ -128,7 +128,7 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 525px) {
 
     .sidebar__item {
         padding: 10px 20px;

@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'HarmoniaB';
-  src: local('HarmoniaSansProCyr'), url(./fonts/HarmoniaSansProCyr-Black.otf) format('opentype');
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./fonts/Roboto-Bold.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'HarmoniaR';
-  src: local('HarmoniaSansProCyr'), url(./fonts/HarmoniaSansProCyr-Regular.ttf) format('truetype');
+  font-family: 'RobotoR';
+  src: local('Roboto'), url(./fonts/Roboto-Regular.ttf) format('truetype');
 }
 
 * {
@@ -15,7 +15,7 @@
 }
 
 body {
-  font-family: 'HarmoniaR', sans-serif;
+  font-family: 'RobotoR', sans-serif;
 }
 
 img {
@@ -57,7 +57,7 @@ section {
 }
 
 .about__img {
-  width: 30%;
+  width: 410px;
 }
 
 .about__text-wrap {
@@ -126,6 +126,10 @@ section {
 
   .about__text-wrap {
     padding: 20px 20px 20px 30px;
+  }
+
+  .about__img {
+    width: 300px;
   }
 
   .about__text {
@@ -206,6 +210,7 @@ section {
 }
 
 @media screen and (max-width: 450px) {
+  
   .about__text {
     font-size: 18px;
     margin-bottom: 10px;

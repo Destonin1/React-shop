@@ -180,7 +180,6 @@
     .btn-modal {
         padding: 10px 12px;
         font-size: 18px;
-        min-width: 80px;
     }
 
     .total-block {
@@ -204,8 +203,7 @@
     }
 
     .modal-footer {
-        grid-template-rows: auto;
-        grid-template-columns: 45% 45%;
+        justify-items: center;
     }
 
     .btn-close {
@@ -232,3 +230,11 @@
         color: #fff;
     }
 }
+
+@media screen and (max-width: 450px) {
+
+    .modal-text {
+        font-size: 18px;
+    }
+}
+
