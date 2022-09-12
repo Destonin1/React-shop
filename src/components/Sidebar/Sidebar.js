@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import PropTypes from 'prop-types'
 import { ContentData } from '../../Contexts/Content';
 import "./Sidebar.css";
 import SidebarItemCheckbox from "./Sidebar-checkbox-input";
@@ -14,7 +15,7 @@ const Sidebar = (props) =>  {
   const [pricesMin, setPricesMin] = useState(pricesMinMax[0]);
   const [pricesMax, setPricesMax] = useState(pricesMinMax[1]);
 
-  const [brands, setBrands] = useState("");
+  const [brands, setBrands] = useState([""]);
   const [chosenBrands, setChosenBrands] = useState([]);
 
   const findMinMax = (arr) => {
@@ -29,22 +30,6 @@ const Sidebar = (props) =>  {
       }
     }
     return [min, max]
-  }
-
-  const initCategory = () =>  {
-    const brandsInit = [];
-    const pricesInit = [];
-    dataContent.forEach((item) => {
-      if(!brandsInit.includes(item.brand)){
-        brandsInit.push(item.brand);
-      }
-      pricesInit.push(item.price);
-    })
-    setBrands(brandsInit);
-    const minMax = findMinMax(pricesInit);
-    setPricesMin(minMax[0]);
-    setPricesMax(minMax[1]);
-    setPricesMinMax(minMax);
   }
 
   const changePriceMin = (e) => {
@@ -89,6 +74,22 @@ const Sidebar = (props) =>  {
   }
 
   useEffect(() => {
+    const initCategory = () =>  {
+      const brandsInit = [];
+      const pricesInit = [];
+      dataContent.forEach((item) => {
+        if(!brandsInit.includes(item.brand)){
+          brandsInit.push(item.brand);
+        }
+        pricesInit.push(item.price);
+      })
+      setBrands(brandsInit);
+      const minMax = findMinMax(pricesInit);
+      setPricesMin(minMax[0]);
+      setPricesMax(minMax[1]);
+      setPricesMinMax(minMax);
+    }
+    
     if(dataContent.length !== 0){
       initCategory();
     }
@@ -102,7 +103,7 @@ const Sidebar = (props) =>  {
       },
       brands : chosenBrands
     });
-  }, [pricesMinMax, chosenBrands])
+  }, [pricesMinMax, chosenBrands, setOptions])
 
   return (
     <div className="sidebar">
@@ -121,6 +122,10 @@ const Sidebar = (props) =>  {
         />
     </div>
   );
+}
+
+Sidebar.propTypes = {
+  setOptions : PropTypes.func,
 }
 
 export default Sidebar;

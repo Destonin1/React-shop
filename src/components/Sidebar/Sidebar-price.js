@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 const SidebarItemPrice = (props) =>  {
 
     const {title, minPrice, onChangeMin, maxPrice, onChangeMax, onSubmit} = props;
@@ -17,6 +19,15 @@ const SidebarItemPrice = (props) =>  {
         </div>
     );
   }
+
+SidebarItemPrice.propTypes = {
+    title : PropTypes.string,
+    minPrice : PropTypes.number,
+    onChangeMin : PropTypes.func,
+    maxPrice : PropTypes.number,
+    onChangeMax : PropTypes.func,
+    onSubmit : PropTypes.func
+}
   
-  export default SidebarItemPrice;
+export default SidebarItemPrice;
   

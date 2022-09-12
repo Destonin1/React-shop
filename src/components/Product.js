@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from "react";
+import PropTypes from 'prop-types'
 import { ContentData } from '../Contexts/Content';
 import "./Product.css";
 
@@ -61,6 +62,14 @@ const Product = (props) =>  {
         </div>
     </div>
   );
+}
+
+Product.propTypes = {
+    id : PropTypes.number,
+    image : PropTypes.string,
+    name : PropTypes.string,
+    price : PropTypes.number,
+    brand : PropTypes.string
 }
 
 export default Product;

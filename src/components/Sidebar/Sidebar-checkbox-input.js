@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Loader from "../Loader";
 
 const SidebarItemCheckbox = (props) =>  {
@@ -23,7 +24,13 @@ const SidebarItemCheckbox = (props) =>  {
             </form>
         </div>
     );
-  }
+}
+
+SidebarItemCheckbox.propTypes = {
+    title : PropTypes.string,
+    items : PropTypes.arrayOf(PropTypes.string),
+    onChange : PropTypes.func
+}
   
-  export default SidebarItemCheckbox;
+export default SidebarItemCheckbox;
   

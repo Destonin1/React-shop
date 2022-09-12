@@ -11,23 +11,6 @@ function App() {
   const [ dataContent, setDataContent ] = useState([])
   const [ basketItemId, setBasketItemId ] = useState("")
 
-  const fetchData = () => {
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': APIKEY,
-        'X-RapidAPI-Host': 'asos2.p.rapidapi.com'
-      }
-    };
-
-    fetch('https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4208&limit=9&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US', options)
-      .then(response => response.json())
-      .then(response => {
-        handleResponse(response);
-      })
-      .catch(err => console.error(err));
-  }
-
   const handleResponse = (response) => {
 
     setDataContent(
@@ -46,10 +29,28 @@ function App() {
   }
 
   useEffect(() => {
+
+    const fetchData = () => {
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': APIKEY,
+          'X-RapidAPI-Host': 'asos2.p.rapidapi.com'
+        }
+      };
+  
+      fetch('https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4208&limit=9&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US', options)
+        .then(response => response.json())
+        .then(response => {
+          handleResponse(response);
+        })
+        .catch(err => console.error(err));
+    }
+
     if (dataContent.length === 0) {
       fetchData();
     }
-  },[]);
+  },[dataContent.length]);
 
   return (
     <div>

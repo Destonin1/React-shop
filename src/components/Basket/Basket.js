@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect, useCallback } from 'react'
 import { ContentData } from '../../Contexts/Content'
 import { myModal } from "../Modal";
 import "./Basket.css"
@@ -84,7 +84,7 @@ const Basket = () =>  {
         }
     }
 
-    const isAlreadyInBasket = (id) => {
+    const isAlreadyInBasket = useCallback((id) => {
         let isInBasket = false;
         basketItems.forEach(item => {
             if(item.id === id){
@@ -93,9 +93,9 @@ const Basket = () =>  {
             }
         });
         return isInBasket;
-    }
+    }, [basketItems])
 
-    const addItemToBasket = (id) => {
+    const addItemToBasket = useCallback((id) => {
         let elem = "";
         for(let i = 0; i < dataContent.length; i++) {
             if(dataContent[i].id === id){
@@ -104,7 +104,7 @@ const Basket = () =>  {
             }
         }
         setBasketItems(basketItems => [...basketItems, elem])
-    }
+    }, [dataContent])
 
     useEffect(() => {
         let total = 0;
@@ -138,7 +138,7 @@ const Basket = () =>  {
             setBasketItemId("")
         }
         
-    },[basketItemId])
+    },[basketItemId, isAlreadyInBasket, addItemToBasket])
 
     return (
     <>

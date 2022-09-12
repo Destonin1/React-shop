@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import "./Loader.css";
 
 const Loader = (props) =>  {
@@ -9,6 +10,10 @@ const Loader = (props) =>  {
         </div> 
         
     );
-  }
+}
+
+Loader.propTypes = {
+    isGray : PropTypes.bool
+}
   
-  export default Loader;
+export default Loader;

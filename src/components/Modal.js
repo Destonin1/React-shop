@@ -1,7 +1,8 @@
 import { createModal } from 'react-modal-promise';
+import PropTypes from 'prop-types'
 import "./Modal.css";
 
-const MyBootrapModal = ({ isOpen, onResolve, onReject, text, title, param, onlyOkBtn = false }) => {
+const MyFlexibleModal = ({ isOpen, onResolve, onReject, text, title, param, onlyOkBtn = false }) => {
     const submit = () => onResolve(param);
     const reject = () => onReject();
   
@@ -24,6 +25,14 @@ const MyBootrapModal = ({ isOpen, onResolve, onReject, text, title, param, onlyO
         </div>
       
     );
-  };
+};
 
-export const myModal = createModal(MyBootrapModal);
+MyFlexibleModal.propTypes = {
+    isOpen : PropTypes.bool,
+    text : PropTypes.string,
+    title : PropTypes.string,
+    param : PropTypes.number,
+    onlyOkBtn : PropTypes.bool
+}
+
+export const myModal = createModal(MyFlexibleModal);

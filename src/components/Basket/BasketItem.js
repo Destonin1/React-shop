@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import "./BasketItem.css"
 
 const BasketItem = (props) =>  {
@@ -17,6 +18,18 @@ const BasketItem = (props) =>  {
       <button className="basket-item__delete" onClick={()=>{onClickDelete(id)}}>Remove</button>
     </div>
   );
+}
+
+BasketItem.propTypes = {
+  id : PropTypes.number,
+  name : PropTypes.string,
+  image : PropTypes.string,
+  price : PropTypes.number,
+  quantity : PropTypes.number,
+  onClickDelete : PropTypes.func,
+  onClickDeduct : PropTypes.func,
+  onClickAdd : PropTypes.func,
+  onChangeQuantity : PropTypes.func,
 }
 
 export default BasketItem;
