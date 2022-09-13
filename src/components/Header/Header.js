@@ -5,6 +5,7 @@ import logo from "../../img/logo.png";
 import burger from "../../img/menu-burger.svg";
 import closeSvg from "../../img/close.svg";
 import Basket from "../Basket/Basket";
+import Authorization from "../Authorization/Authorization";
 
 const Header = () =>  {
 
@@ -47,7 +48,10 @@ const Header = () =>  {
                         </li>
                     </ul>
                 </nav>
-                <Basket />
+                <div className="side-menu">
+                    <Authorization />
+                    <Basket />
+                </div>
             </div>
         </div>
     </header>

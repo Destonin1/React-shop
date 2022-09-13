@@ -1,10 +1,11 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { ContentData } from './Contexts/Content';
 import { useState, useEffect } from 'react'
+import { initializeApp } from "firebase/app";
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import About from './pages/About';
-import APIKEY from "./config"
+import { ApiKeyShop, ApiKeyFirebase } from "./config"
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
       const options = {
         method: 'GET',
         headers: {
-          'X-RapidAPI-Key': APIKEY,
+          'X-RapidAPI-Key': ApiKeyShop,
           'X-RapidAPI-Host': 'asos2.p.rapidapi.com'
         }
       };
@@ -52,9 +53,22 @@ function App() {
     }
   },[dataContent.length]);
 
+  const firebaseConfig = {
+    apiKey: ApiKeyFirebase,
+    authDomain: "react-shop-c619c.firebaseapp.com",
+    projectId: "react-shop-c619c",  
+    storageBucket: "react-shop-c619c.appspot.com",
+    messagingSenderId: "299913024289",
+    appId: "1:299913024289:web:a7c2e49b4ad801c6206460",
+    measurementId: "G-DPH3L9K5BH"
+  
+  };
+  
+  const FirebaseApp = initializeApp(firebaseConfig);
+
   return (
     <div>
-      <ContentData.Provider value={{ dataContent, setDataContent, basketItemId, setBasketItemId }}>
+      <ContentData.Provider value={{ dataContent, setDataContent, basketItemId, setBasketItemId, FirebaseApp }}>
         <HashRouter>
           <Routes>
               <Route exact path="/" element={<Home/>}/>

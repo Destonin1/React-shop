@@ -1,0 +1,155 @@
+.user-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-user {
+    cursor: pointer;
+    z-index: 5;
+    border: none;
+}
+
+.user-img {
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+}
+
+.autho-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    transition: 0.3s;
+}
+
+.autho-bg {
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.6;
+}
+
+.autho-block {
+    padding: 30px 40px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    transform-origin: top left;
+    border: 1px solid #000;
+    background-color: #fff;
+    border-radius: 5px;
+    opacity: 0;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.autho-block_active {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.autho-header {
+    position: relative;
+}
+
+.autho-title {
+    font-size: 29px;
+    font-weight: 700;
+    text-align: center;
+    color: #ff5912;
+}
+
+.autho-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.autho-close:hover {
+    color: #ff5912;
+}
+
+.autho-body {
+    margin: 40px 0;
+}
+
+.autho-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.autho-form__item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 20px;
+    row-gap: 10px;
+}
+
+.autho-label {
+    font-size: 20px;
+}
+
+.autho-input {
+    border: 1px solid rgb(63, 63, 63);
+    font-size: 18px;
+    padding: 5px 10px;
+    flex-basis: 60%;
+}
+
+.autho-error {
+    grid-column: 2 / 3;
+    font-size: 14px;
+    color: #FF9494;
+    text-align: center;
+    letter-spacing: 0.2px;
+    font-weight: 700;
+}
+
+.autho-switch {
+    display: block;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: rgb(51, 86, 182);
+    text-align: center;
+    margin: 30px auto 0 auto; 
+    cursor: pointer;
+}
+
+.autho-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.autho-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.autho-btn:hover {
+    opacity: 0.9;
+}
+
+.autho-btn-close {
+    background: #edf0f2;
+    color: #000;
+}
+
+.autho-btn-submit {
+    background: #ff5912;
+    color: #fff;
+}
+
