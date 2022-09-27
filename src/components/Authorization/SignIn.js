@@ -1,47 +1,109 @@
-import { useEffect } from "react"
+import { useState, useContext, useEffect } from "react"
+import PropTypes from 'prop-types'
+import { ContentData } from '../../Contexts/Content'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import styles from "./SignInRegister.module.css"
 
 const SignIn = (props) =>  {
 
-    const { email, emailChange, password, passwordChange, setShowBlock, setShowSignIn, ClickSignIn, invalidEmail, userNotFound, wrongPassword } = props
+    const { showBlock, setShowBlock, setShowSignIn } = props
 
-    const showingBlock = () => {
-        document.getElementsByClassName("autho-block")[0].classList.add("autho-block_active")
+    const { FirebaseApp } = useContext(ContentData)
+    const auth = getAuth(FirebaseApp);
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [invalidEmail, setInvalidEmail] = useState("");
+    const [wrongPassword, setWrongPassword] = useState("");
+
+    const errorStyle = {
+        border: '1px solid #FF9494',
+        outline: '2px solid #FF9494',
+    };
+
+    const onChangeEmail = (e) => {
+        setEmail(e.target.value);
+        setInvalidEmail("");
+    }
+
+    const onChangePassword = (e) => {
+        setPassword(e.target.value);
+        setWrongPassword("");
+    }
+
+    const reset = () => {
+        setShowBlock(false);
+        setShowSignIn(true);
+        setEmail("");
+        setPassword("");
+    }
+
+    const ClickSignIn = () => {
+        signInWithEmailAndPassword(auth, email.trim(), password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            reset()
+        })
+        .catch((error) => {
+            setInvalidEmail("");
+            setWrongPassword("");
+            if(error.code === "auth/invalid-email") {
+                setInvalidEmail("Invalid email, please try again.");
+            }
+            else if(error.code === "auth/user-not-found") {
+                setInvalidEmail("User not found, please try again.");
+            }
+            else if(error.code === "auth/wrong-password") {
+                setWrongPassword("Wrong password, please try again.")
+            }
+        });
+    }
+
+    const visualEffect = () => {
+        document.getElementsByClassName(styles.block)[0].classList.add(styles.blockActive);
     }
 
     useEffect(() => {
-        setTimeout(showingBlock)
+        setTimeout(visualEffect);
     },[])
     
     return (
-        <div className="autho-wrap">
-            <div className="autho-block">
-                <div className="autho-header">
-                    <h2 className="autho-title">Log in</h2>
-                    <span className="autho-close" onClick={() => {setShowBlock(false)}}>&times;</span>
+        <div className={showBlock ? `${styles.wrap} ${styles.wrapActive}` : styles.wrap}>
+            <div className={styles.block}>
+                <div className={styles.header}>
+                    <h2 className={styles.title}>Sign In</h2>
+                    <span className={styles.close} onClick={() => {setShowBlock(false)}}>&times;</span>
                 </div>
-                <div className="autho-body">
-                    <form className="autho-form">
-                        <div className="autho-form__item">
-                            <label className="autho-label">Email:</label>
-                            <input className="autho-input" type="text" value = {email} onChange = {emailChange}/>
-                            <span className="autho-error">{invalidEmail ? "invalid email. Try again." : userNotFound ? "User not found" : ""}</span>
+                <div className={styles.body}>
+                    <form className={styles.form}>
+                        <label className={styles.label}>Email:</label>
+                        <div className={styles.inputBlock}>
+                            <input className={styles.input} type="text"  style={invalidEmail ? errorStyle : {}} value={email} onChange={onChangeEmail}/>
+                            {invalidEmail ? <span className={styles.error}>{invalidEmail}</span> : "" }
                         </div>
-                        <div className="autho-form__item">
-                            <label className="autho-label">Password:</label>
-                            <input className="autho-input" type="password" value = {password} onChange = {passwordChange}/>
+                        <label className={styles.label}>Password:</label>
+                        <div className={styles.inputBlock}>
+                            <input className={styles.input} type="password" style={wrongPassword ? errorStyle : {}} value={password} onChange={onChangePassword} />
+                            {wrongPassword ? <span className={styles.error}>{wrongPassword}</span> : "" }
                         </div>
-                        <span className="autho-error">{wrongPassword ? "Wrong password. Try again." : ""}</span>
                     </form>
-                    <button className="autho-switch" onClick={() => {setShowSignIn(false)}}>Don't have an account? Register here</button>
+                    <button className={styles.switch} onClick={() => {setShowSignIn(false)}}>Don't have an account? Register here</button>
                 </div>
-                <div className="autho-footer">
-                    <button className="autho-btn autho-btn-close" onClick={() => {setShowBlock(false)}}>Close</button>
-                    <button className="autho-btn autho-btn-submit" onClick={ClickSignIn}>Submit</button>
+                <div className={styles.footer}>
+                    <button className={`${styles.btn} ${styles.submit}`} onClick={ClickSignIn}>Submit</button>
+                    <button className={`${styles.btn} ${styles.btnClose}`} onClick={() => {setShowBlock(false)}}>Close</button>
                 </div>
             </div>
-            <div className="autho-bg" onClick={() => {setShowBlock(false)}}></div>
+            <div className={styles.bg} onClick={() => {setShowBlock(false)}}></div>
         </div>
     );
+}
+
+SignIn.propTypes = {
+    showBlock : PropTypes.bool,
+    setShowBlock : PropTypes.func,
+    setShowSignIn : PropTypes.func,
 }
 
 export default SignIn;

@@ -1,40 +1,28 @@
-.user-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
 
-.btn-user {
-    cursor: pointer;
-    z-index: 5;
-    border: none;
-}
-
-.user-img {
-    background-color: transparent;
-    width: 20px;
-    height: 20px;
-}
-
-.autho-wrap {
+.wrap {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 99;
+    z-index: 999;
     transition: 0.3s;
+    scale: 0;
+    transition: none;
 }
 
-.autho-bg {
+.wrapActive {
+    scale: 1;
+}
+
+.bg {
     height: 100%;
     width: 100%;
     background-color: #000;
     opacity: 0.6;
 }
 
-.autho-block {
+.block {
     padding: 30px 40px;
     position: absolute;
     top: 40%;
@@ -49,23 +37,23 @@
     transition: 0.3s;
 }
 
-.autho-block_active {
+.blockActive {
     opacity: 1;
     transform: translate(-50%, -50%);
 }
 
-.autho-header {
+.header {
     position: relative;
 }
 
-.autho-title {
+.title {
     font-size: 29px;
     font-weight: 700;
     text-align: center;
     color: #ff5912;
 }
 
-.autho-close {
+.close {
     position: absolute;
     top: 0;
     right: 0;
@@ -73,48 +61,55 @@
     cursor: pointer;
 }
 
-.autho-close:hover {
+.close:hover {
     color: #ff5912;
 }
 
-.autho-body {
+.body {
     margin: 40px 0;
 }
 
-.autho-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.autho-form__item {
+.form {
     display: grid;
     grid-template-columns: 1fr auto;
+    align-items: center;
+    justify-items: end;
     column-gap: 20px;
-    row-gap: 10px;
+    row-gap: 20px;
 }
 
-.autho-label {
-    font-size: 20px;
+.label {
+    font-size: 18px;
+    white-space: nowrap;
 }
 
-.autho-input {
+.inputBlock {
+    flex-basis: 60%;
+    position: relative;
+}
+
+.input {
     border: 1px solid rgb(63, 63, 63);
+    border-radius: 3px;
     font-size: 18px;
     padding: 5px 10px;
-    flex-basis: 60%;
+    outline: none;
 }
 
-.autho-error {
-    grid-column: 2 / 3;
-    font-size: 14px;
+.error {
+    position: absolute;
+    bottom: -17px;
+    right: 0;
+    left: 0;
+    font-size: 12px;
     color: #FF9494;
     text-align: center;
     letter-spacing: 0.2px;
     font-weight: 700;
+    white-space: nowrap;
 }
 
-.autho-switch {
+.switch {
     display: block;
     border: none;
     background-color: transparent;
@@ -125,31 +120,58 @@
     cursor: pointer;
 }
 
-.autho-footer {
+.footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
-.autho-btn {
+.btn {
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 10px;
     border: none;
-    cursor: pointer;
 }
 
-.autho-btn:hover {
+.btn:hover {
     opacity: 0.9;
 }
 
-.autho-btn-close {
+.btnClose {
     background: #edf0f2;
     color: #000;
 }
 
-.autho-btn-submit {
+.submit {
     background: #ff5912;
     color: #fff;
 }
 
+@media screen and (max-width: 550px) {
+    .block {
+        padding: 30px 20px;
+        width: 80%;
+    }
+
+    .body {
+        margin: 20px 0;
+    }
+
+    .form {
+        grid-template-columns: auto;
+        justify-content: center;
+        column-gap: 0;
+        row-gap: 10px;
+    }
+
+    .label {
+        text-align: center;
+        justify-self: center;
+    }
+
+    .input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+}

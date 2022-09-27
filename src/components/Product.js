@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import PropTypes from 'prop-types'
 import { ContentData } from '../Contexts/Content';
-import "./Product.css";
+import styles from "./Product.module.css";
 
 const Product = (props) =>  {
 
@@ -25,24 +25,24 @@ const Product = (props) =>  {
     }
 
   return (
-    <div className="product">
+    <div className={styles.wrap}>
         {!matches ? "":            
-        <div className="product__front">
-            <img className="product__image" src={"https://" + image} alt="jeans"/>
-            <p className="product__name">{name}</p>
-            <span className="product__price">{price}$</span>
+        <div className={styles.front}>
+            <img className={styles.img} src={"https://" + image} alt="jeans"/>
+            <p className={styles.name}>{name}</p>
+            <span className={styles.price}>{price}$</span>
         </div>
         }
-        <div className="product__hover">
-            <img className="product__image_hover" src={"https://" + image} alt="jacket"/>
-            <p className="product__name product__name_hover">{name}</p>
-            <div className="product__brand-block">
-                <span className="product__brand">Brand: {brand}</span>
+        <div className={styles.hover}>
+            <img className={styles.imgHover} src={"https://" + image} alt="jacket"/>
+            <p className={styles.name}>{name}</p>
+            <div className={styles.brandBlock}>
+                <span className={styles.brand}>Brand: {brand}</span>
             </div>
-            <div className="product__buy-block">
-                <span className="product__price">{price}$</span>
-                <button className="product__buy-btn" id={id} onClick={buyClick}>
-                    <svg className="product__buy-img" alt="buy" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 26 26">
+            <div className={styles.buyBlock}>
+                <span className={styles.price}>{price}$</span>
+                <button className={styles.buy} id={id} onClick={buyClick}>
+                    <svg className={styles.buyImg} alt="buy" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 26 26">
                         <g className="product__buy-img-fill">
                             <path d="M25.856,10.641C21.673,19.5,20.312,19.5,19.5,19.5h-8c-2.802,0-4.949-1.648-5.47-4.2
                                 c-0.016-0.078-1.6-7.853-2.005-10.025C3.826,4.21,3.32,3.5,1.5,3.5C0.671,3.5,0,2.829,0,2s0.671-1.5,1.5-1.5

@@ -1,27 +1,27 @@
 import { createModal } from 'react-modal-promise';
 import PropTypes from 'prop-types'
-import "./Modal.css";
+import styles from  "./Modal.module.css";
 
 const MyFlexibleModal = ({ isOpen, onResolve, onReject, text, title, param, onlyOkBtn = false }) => {
     const submit = () => onResolve(param);
     const reject = () => onReject();
   
     return (
-        <div className={isOpen ? "modal modal_active":"modal"}>
-            <div className={isOpen ? "modal-block modal-block_active":"modal-block"}>
-                <div className="modal-header">
-                    <h3 className="modal-title">{title}</h3>
-                    <button className="modal-close" onClick={reject}>&times;</button>
+        <div className={isOpen ? `${styles.modal} ${styles.modalActive}` : styles.modal }>
+            <div className={isOpen ? `${styles.block} ${styles.blockActive}`: styles.block}>
+                <div className={styles.header}>
+                    <h3 className={styles.title}>{title}</h3>
+                    <button className={styles.close} onClick={reject}>&times;</button>
                 </div>
-                <div className="modal-body">
-                <p className="modal-text">{text}</p>
+                <div className={styles.body}>
+                <p className={styles.text}>{text}</p>
                 </div>
-                <div className="modal-footer modal-footer-small">
-                    <button className="btn-accept btn-modal" onClick={submit}>Ok</button>
-                    {onlyOkBtn ? "" :<button className="btn-cancel btn-modal" onClick={reject}>Cancel</button>} 
+                <div className={styles.footer}>
+                    <button className={`${styles.accept} ${styles.btn}`} onClick={submit}>Ok</button>
+                    {onlyOkBtn ? "" :<button className={`${styles.cancel} ${styles.btn}`} onClick={reject}>Cancel</button>} 
                 </div>
             </div>
-            <div className="modal-bg"></div>
+            <div className={styles.bg}></div>
         </div>
       
     );

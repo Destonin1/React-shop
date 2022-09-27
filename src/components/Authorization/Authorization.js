@@ -1,9 +1,12 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { ContentData } from '../../Contexts/Content'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import "./Authorization.css"
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import styles from "./Authorization.module.css"
 import SignIn from "./SignIn"
 import Registration from "./Registration"
+import UserInfoBlock from "./UserInfoBlock"
+import Button from "../UI/buttonOrange"
+import useOutsideClick from "../../Hooks/ClickOutside"
 import userSvg from "../../img/user.svg"
 
 const Authorization = () =>  {
@@ -11,70 +14,72 @@ const Authorization = () =>  {
     const { FirebaseApp } = useContext(ContentData)
     const auth = getAuth(FirebaseApp);
 
+    const [logIn, setLogIn] = useState(false);
+    const [username, setUsername] = useState("");
+
     const [showBlock, setShowBlock] = useState(false);
     const [showSignIn, setShowSignIn] = useState(true);
-    const [isLogIn, setIsLogIn] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [invalidEmail, setInvalidEmail] = useState(false);
-    const [userNotFound, setUserNotFound] = useState(false);
-    const [wrongPassword, setWrongPassword] = useState(false);
-
-    const onChangeEmail = (e) => {
-        setEmail(e.target.value);
-        invalidEmail(false);
-        userNotFound(false);
+    
+    const reset = () => {
+        setShowBlock(false);
+        setShowSignIn(true);
     }
 
-    const ClickSignIn = () => {
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            console.log(user);
-            setIsLogIn(user.email)
-        })
-        .catch((error) => {
-            if(error.code === "auth/invalid-email") {
-                setInvalidEmail(true);
-                console.log(1)
-            }
-            if(error.code === "auth/user-not-found") {
-                setUserNotFound(true)
-                console.log(2)
-            }
-            if(error.code === "auth/wrong-password") {
-                setWrongPassword(true)
-                console.log(3)
+    const Logout = async () => {
+        await signOut(auth);
+        setLogIn(false);
+        reset()
+    }
+
+    const handleClickOutside = () => {
+        setShowBlock(false);
+    }
+
+    const ref = useOutsideClick(handleClickOutside);
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setLogIn(true);
+                setUsername(user.email);
             }
         });
-    }
+    },[auth])
     
     return (
-    <>
-        <div className="user-menu">
-            <button className="btn-user" onClick = {() => {setShowBlock(!showBlock)}}>
-                <img className='user-img' src={userSvg} alt="User"/>
-            </button>
-            { isLogIn ? <span className="user-name">UserName</span>: ""}
+        <div className={styles.wrap}>
+        { logIn ? (
+            <div className={styles.login}  ref={ref}>
+                <button className={styles.button} onClick = {() => {setShowBlock(!showBlock)}}>
+                    <img className={styles.img} src={userSvg} alt="User"/>
+                </button>
+                <span className={styles.username}>{username}</span>
+                <UserInfoBlock 
+                    Logout = {Logout}
+                    showBlock = {showBlock}
+                    username = {username}
+                />
+            </div>)
+            :
+            (<div>
+                <Button text = {"Sign In"} cb = {() => {setShowBlock(!showBlock)}}/>
+                {   showBlock ?
+                        showSignIn ? 
+                            <SignIn
+                                showBlock = {showBlock}
+                                setShowBlock = {setShowBlock}
+                                setShowSignIn = {setShowSignIn}
+                            />
+                            :<Registration
+                                showBlock = {showBlock}
+                                setShowBlock = {setShowBlock}
+                                setShowSignIn = {setShowSignIn}
+                            />
+                    : ""
+                }
+            </div>)
+        }
         </div>
-        {showBlock ? showSignIn ? 
-        <SignIn
-            email = {email}
-            emailChange = {onChangeEmail}
-            password = {password}
-            passwordChange = {setPassword}
-            setShowBlock = {setShowBlock}
-            setShowSignIn = {setShowSignIn}
-            ClickSignIn = {ClickSignIn}
-            invalidEmail = {invalidEmail}
-            userNotFound = {userNotFound}
-            wrongPassword = {wrongPassword}
-        />:<Registration 
-            setShowBlock = {setShowBlock}
-            setShowSignIn = {setShowSignIn}
-        /> : ""}
-    </>
   );
 }
 

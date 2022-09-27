@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect, useCallback } from 'react'
 import { ContentData } from '../../Contexts/Content'
 import { myModal } from "../Modal";
-import "./Basket.css"
+import styles from "./Basket.module.css"
 import BasketItem from "./BasketItem"
 import basketSvg from "../../img/basket.svg"
 
@@ -26,11 +26,20 @@ const Basket = () =>  {
     const clearBasket = () => {
         setBasketItems([]);
         setBasketItemId("");
+        sessionStorage.removeItem('basketItems');
     }
 
     const removeItem = (id) => {
         let arrWithoutItem = basketItems.filter((item)=>{return  item.id !==  id});
         setBasketItems(arrWithoutItem);
+        const LSBasketItems = JSON.parse(sessionStorage.getItem('basketItems'));
+        if(LSBasketItems !== null) {
+            let arrWithoutItemIds = [];
+            for(let i = 0; i < arrWithoutItem.length; i++) {
+                arrWithoutItemIds.push(arrWithoutItem[i].id)
+            }
+            sessionStorage.setItem('basketItems', JSON.stringify(arrWithoutItemIds));
+        }
     }
 
     const quantityChange = (value,id) => {
@@ -96,15 +105,40 @@ const Basket = () =>  {
     }, [basketItems])
 
     const addItemToBasket = useCallback((id) => {
-        let elem = "";
+        let newItemBasket = "";
         for(let i = 0; i < dataContent.length; i++) {
             if(dataContent[i].id === id){
-                elem = dataContent[i];
+                newItemBasket = dataContent[i];
                 break;
             }
         }
-        setBasketItems(basketItems => [...basketItems, elem])
+        addItemToSessionStorage(newItemBasket.id)
+        
+        setBasketItems(basketItems => [...basketItems, newItemBasket])
+
     }, [dataContent])
+
+    const addItemToSessionStorage = (newItem) => {
+        const LSBasketItems = JSON.parse(sessionStorage.getItem('basketItems'));
+        if(LSBasketItems === null) {
+            sessionStorage.setItem('basketItems', JSON.stringify([newItem]));
+        }
+        else {
+            LSBasketItems.push(newItem)
+            sessionStorage.setItem('basketItems', JSON.stringify(LSBasketItems, newItem)); 
+        }
+    }
+
+    useEffect(() => {
+        const ItemsFromLS = JSON.parse(sessionStorage.getItem('basketItems'))
+        if(ItemsFromLS !== null && basketItems.length === 0) {
+            for(let i = 0; i < dataContent.length; i++) {
+                if(ItemsFromLS.includes(dataContent[i].id)){
+                    setBasketItems(basketItems => [...basketItems, dataContent[i]])
+                }
+            }
+        }
+    },[dataContent])
 
     useEffect(() => {
         let total = 0;
@@ -138,23 +172,23 @@ const Basket = () =>  {
             setBasketItemId("")
         }
         
-    },[basketItemId, isAlreadyInBasket, addItemToBasket])
+    },[basketItemId, isAlreadyInBasket, addItemToBasket, setBasketItemId])
 
     return (
     <>
-        <button className="btn-basket" onClick={openBasket}>
-            <img className='basket-img' src={basketSvg} alt="Basket"/>
-            <span className="basket-number">{basketItems.length}</span>
+        <button className={styles.btnBasket} onClick={openBasket}>
+            <img className={styles.basketImg} src={basketSvg} alt="Basket"/>
+            <span className={styles.number}>{basketItems.length}</span>
         </button>
-        <div className={showModal ? "modal modal-basket_active":"modal"}>
-            <div className={showModal ? "modal-block modal-block_active":"modal-block"}>
-                <div className="modal-header">
-                    <h3 className="modal-title">Products in the basket:</h3>
-                    <button className="modal-close" onClick={closeBasket}>&times;</button>
+        <div className={showModal ? `${styles.modal} ${styles.modalActive}` : styles.modal}>
+            <div className={showModal ? `${styles.block} ${styles.blockActive}` : styles.block}>
+                <div className={styles.header}>
+                    <h3 className={styles.title}>Products in the basket:</h3>
+                    <button className={styles.close} onClick={closeBasket}>&times;</button>
                 </div>
-                <div className="modal-body basket-modal-block">
+                <div className={styles.body}>
                     {
-                        basketItems.length === 0 ? <p className="modal__empty-text">Basket is empty</p> : (basketItems.map((item)=> {
+                        basketItems.length === 0 ? <p className={styles.empty}>Basket is empty</p> : (basketItems.map((item)=> {
                             return (
                             <BasketItem 
                                 key = {item.id}
@@ -171,14 +205,14 @@ const Basket = () =>  {
                         }))
                     }
                 </div>
-                <div className="modal-footer">
-                    <button className="btn-close btn-modal" onClick={closeBasket}>Close</button>
-                    <button className="btn-clear btn-modal" onClick={clickClearAll}>Clear all</button>
-                    <div className='total-block'>Total: <span className='total-block__price'>{totalPrice}$</span></div>
-                    <button className="btn-order btn-modal" onClick={clickOrder}>Order</button>
+                <div className={styles.footer}>
+                    <button className={`${styles.btnClose} ${styles.btn}`} onClick={closeBasket}>Close</button>
+                    <button className={`${styles.clear} ${styles.btn}`} onClick={clickClearAll}>Clear all</button>
+                    <div className={styles.total}>Total: <span className={styles.price}>{totalPrice}$</span></div>
+                    <button className={`${styles.order} ${styles.btn}`} onClick={clickOrder}>Order</button>
                 </div>
             </div>
-            <div className="modal-bg" onClick={closeBasket}></div>
+            <div className={styles.bg} onClick={closeBasket}></div>
         </div>
     </>
   );

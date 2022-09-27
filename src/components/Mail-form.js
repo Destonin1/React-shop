@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { myModal } from "./Modal";
-import "./Mail-form.css"
+import Button from "./UI/buttonOrange"
+import styles from "./Mail-form.module.css"
 import letterImg from "../img/mail.png";
 
 const MailForm = () =>  {
@@ -36,12 +37,12 @@ const MailForm = () =>  {
     }
 
     return (
-        <div className="footer__item letter">
-            <span className="letter__title">news letter</span>
-            <form className="letter__form">
-                <img className="mail-img" src={letterImg} alt="letter"/>
-                <input className="letter__form-input" type="email" placeholder="Type your email here" value={mail} onChange={mailChange}/>
-                <input className="letter__form-submit" type="submit" value="Join us" onClick={clickMail}/>
+        <div>
+            <span className={styles.title}>news letter</span>
+            <form className={styles.form}>
+                <img className={styles.img} src={letterImg} alt="letter"/>
+                <input className={styles.input} type="email" placeholder="Type your email here" value={mail} onChange={mailChange}/>
+                <Button text = {"Join us"} cb = {clickMail}/>
             </form>
         </div>
         

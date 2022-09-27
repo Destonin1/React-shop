@@ -1,16 +1,17 @@
 import { NavLink, Link } from "react-router-dom";
 import { useState, useEffect } from "react"
-import "./Header.css";
+import styles from "./Header.module.css";
 import logo from "../../img/logo.png";
 import burger from "../../img/menu-burger.svg";
 import closeSvg from "../../img/close.svg";
 import Basket from "../Basket/Basket";
 import Authorization from "../Authorization/Authorization";
+import useOutsideClick from "../../Hooks/ClickOutside"
 
 const Header = () =>  {
 
     const [matches, setMatches] = useState(
-        window.matchMedia("(min-width: 750px)").matches
+        window.matchMedia("(min-width: 768px)").matches
     )
 
     const [openMenu, setOpenMenu] = useState(false)
@@ -18,37 +19,43 @@ const Header = () =>  {
     const toggleMenu = () => {
         setOpenMenu(!openMenu);
     }
+
+    const handleClickOutside = () => {
+        setOpenMenu(false);
+    }
+
+    const ref = useOutsideClick(handleClickOutside);
     
     useEffect(() => {
         window
-        .matchMedia("(min-width: 750px)")
+        .matchMedia("(min-width: 768px)")
         .addEventListener('change', e => setMatches( e.matches ));
     }, []);
 
   return (
-    <header className="header">
+    <header>
         <div className="container">
-            <div className="header-block">
+            <div className={styles.block}>
                 <Link to='/' className="logo">
                     <img src={logo} alt="logo"/>
                 </Link>
-                <nav className="menu">
+                <nav className={styles.menu} ref={ref}>
                     {matches ? "" :
-                        openMenu ? <img className="menu-icon" src={closeSvg} onClick={toggleMenu} alt="menu"/> : <img className="menu-icon" src={burger} onClick={toggleMenu} alt="menu"/>
+                        openMenu ? <img className={styles.icon} src={closeSvg} onClick={toggleMenu} alt="menu"/> : <img className={styles.icon} src={burger} onClick={toggleMenu} alt="menu"/>
                     }
-                    <ul className={openMenu ? "menu__links_open menu__links" : "menu__links"}>
-                        <li className="menu__li">
-                            <NavLink to='/' className={({ isActive }) => (isActive ? "menu__link link_active" : "menu__link")}>Home</NavLink>
+                    <ul className={openMenu ? `${styles.linksOpen} ${styles.links}` : styles.links }>
+                        <li className={styles.item}>
+                            <NavLink to='/' className={({ isActive }) => (isActive ? `${styles.linkActive} ${styles.link}` : styles.link)}>Home</NavLink>
                         </li>
-                        <li className="menu__li">
-                            <NavLink to='/catalog' className={({ isActive }) => (isActive ? "menu__link link_active" : "menu__link")}>Catalog</NavLink>
+                        <li className={styles.item}>
+                            <NavLink to='/catalog' className={({ isActive }) => (isActive ? `${styles.linkActive} ${styles.link}` : styles.link)}>Catalog</NavLink>
                         </li>
-                        <li className="menu__li">
-                            <NavLink to='/about'  className={({ isActive }) => (isActive ? "menu__link link_active" : "menu__link")}>About</NavLink>
+                        <li className={styles.item}>
+                            <NavLink to='/about'  className={({ isActive }) => (isActive ? `${styles.linkActive} ${styles.link}` : styles.link)}>About</NavLink>
                         </li>
                     </ul>
                 </nav>
-                <div className="side-menu">
+                <div className={styles.sideMenu}>
                     <Authorization />
                     <Basket />
                 </div>

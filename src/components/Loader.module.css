@@ -1,4 +1,4 @@
-.loader-container {
+.container {
     font-size: 10px;
     position: relative;
     width: 100%;
@@ -9,7 +9,7 @@
     vertical-align: top;
 }
 
-.loader-1 {
+.loader {
     width: 50px;
     height: 50px;
     position: absolute;
@@ -30,7 +30,7 @@
     transform: translateZ(0);
 }
 
-.loader-1:before {
+.loader:before {
     content: '';
     width: 25px;
     height: 25px;
@@ -41,7 +41,7 @@
     border-radius: 100% 0 0 0;
 }
 
-.loader-1:after {
+.loader:after {
     content: '';
     width: 40px;
     height: 40px;
@@ -55,7 +55,7 @@
     right: 0;
 }
 
-.gray-loader .loader-1:after {
+.gray .loader:after {
     background: #f4f6f8;;
 }
 
