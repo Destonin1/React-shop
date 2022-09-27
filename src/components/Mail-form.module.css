@@ -1,4 +1,4 @@
-.letter__title {
+.title {
     color: #ff5912;
     font-size: 20px;
     text-transform: uppercase;
@@ -8,46 +8,29 @@
     margin-bottom: 10px;
 }
 
-.letter__form {
+.form {
     text-align: center;
 }
   
-.mail-img {
+.img {
     margin-right: 10px;
 }
   
-.letter__form-input {
+.input {
     padding: 10px;
     margin-right: 10px;
     font-size: 16px;
     border: none;
 }
   
-.letter__form-input:focus-visible {
+.input:focus-visible {
     border: none;
     outline: none;
 }
-  
-.letter__form-submit {
-    padding: 10px;
-    background-color: #ff5912;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-  
-.letter__form-submit:hover {
-    opacity: 0.9;
-}
 
 @media screen and (max-width: 360px) {
-    .letter__form-submit {
-        margin-top: 10px;
-    }
 
-    .mail-img {
+    .img {
         margin-left: 30px;
     }
 }

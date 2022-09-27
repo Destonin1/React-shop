@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import PropTypes from 'prop-types'
 import { ContentData } from '../../Contexts/Content';
-import "./Sidebar.css";
+import styles from "./Sidebar.module.css";
 import SidebarItemCheckbox from "./Sidebar-checkbox-input";
 import SidebarItemPrice from "./Sidebar-price";
 
@@ -14,6 +14,8 @@ const Sidebar = (props) =>  {
   const [pricesMinMax, setPricesMinMax] = useState([0,100]);
   const [pricesMin, setPricesMin] = useState(pricesMinMax[0]);
   const [pricesMax, setPricesMax] = useState(pricesMinMax[1]);
+  const [errorPrice, setErrorPrice] = useState(false);
+
 
   const [brands, setBrands] = useState([""]);
   const [chosenBrands, setChosenBrands] = useState([]);
@@ -33,36 +35,41 @@ const Sidebar = (props) =>  {
   }
 
   const changePriceMin = (e) => {
+    const newValue = Number(e.target.value);
+
+    if(newValue <= 0){
+      setErrorPrice(true);
+    }
+    else if (newValue > Number(pricesMax)) {
+      setErrorPrice(true);
+    }
+    else {
+      setErrorPrice(false);
+    }
     setPricesMin(e.target.value);
   }
 
   const changePriceMax = (e) => {
+    const newValue = Number(e.target.value);
+
+    if(newValue <= 0){
+      setErrorPrice(true);
+    }
+    else if (newValue < Number(pricesMin)) {
+      setErrorPrice(true);
+    }
+    else {
+      setErrorPrice(false);
+    }
     setPricesMax(e.target.value);
   }
 
   const updatePrices = (e) => {
     e.preventDefault();
-
-    let newPriceMin = 0;
-    if(pricesMin !== ""){
-      if(pricesMin > pricesMax) {
-        newPriceMin = pricesMax;
-      }
-      else {
-        newPriceMin = pricesMin;
-      }
-    }
-
-    let newPriceMax = 0;
-    if(pricesMax < pricesMinMax[0]){
-      newPriceMax = pricesMinMax[0];
-    }
-    else {
-      newPriceMax = pricesMax;
-
-    }
     
-    setPricesMinMax([newPriceMin, newPriceMax]);
+    if(!errorPrice) {
+      setPricesMinMax([pricesMin, pricesMax]);
+    }
   }
 
   const updateBrands = (item) => {
@@ -106,7 +113,7 @@ const Sidebar = (props) =>  {
   }, [pricesMinMax, chosenBrands, setOptions])
 
   return (
-    <div className="sidebar">
+    <div className={styles.sidebar}>
         <SidebarItemCheckbox 
           title = "Brands"
           items = {brands}
@@ -119,6 +126,7 @@ const Sidebar = (props) =>  {
           maxPrice = {pricesMax}
           onChangeMax = {changePriceMax}
           onSubmit = {updatePrices}
+          error = {errorPrice}
         />
     </div>
   );

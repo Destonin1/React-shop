@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import styles from "./Sidebar.module.css";
 import Loader from "../Loader";
 
 const SidebarItemCheckbox = (props) =>  {
@@ -6,17 +7,17 @@ const SidebarItemCheckbox = (props) =>  {
     const {title, items, onChange} = props;
 
     return (
-        <div className="sidebar__item">
-            <h3 className="sidebar__item-title">{title}</h3>
-            <form className="sidebar__form sidebar__form-checkbox">
+        <div className={styles.wrap}>
+            <h3 className={styles.title}>{title}</h3>
+            <form className={styles.formCheckbox}>
             {
                 items.length === 0 ?
                     <Loader />
                     
                     :items.map((item, index) => (
-                    <div className="sidebar__form-item" key={index}>
-                        <input className="sidebar__input" id={item + index} type="checkbox" onClick={() => {onChange(item)}} name={item}></input>
-                        <label className="sidebar__label" htmlFor={item + index}>{item}</label>
+                    <div className={styles.item} key={index}>
+                        <input className={styles.checkbox} id={item + index} type="checkbox" onClick={() => {onChange(item)}} name={item}></input>
+                        <label className={styles.square} htmlFor={item + index}>{item}</label>
                     </div>
                 )
                 )
