@@ -19,9 +19,20 @@ const Authorization = () =>  {
 
     const [showBlock, setShowBlock] = useState(false);
     const [showSignIn, setShowSignIn] = useState(true);
+
+    const showModal = (bool) => {
+        setShowBlock(bool);
+        if(bool) {
+            document.body.style.overflow = "hidden"
+        }
+        else {
+            document.body.style.overflow = "visible"
+        }
+        
+    }
     
     const reset = () => {
-        setShowBlock(false);
+        showModal(false);
         setShowSignIn(true);
     }
 
@@ -50,7 +61,7 @@ const Authorization = () =>  {
         <div className={styles.wrap}>
         { logIn ? (
             <div className={styles.login}  ref={ref}>
-                <button className={styles.button} onClick = {() => {setShowBlock(!showBlock)}}>
+                <button className={styles.button} onClick = {() => {showModal(!showBlock)}}>
                     <img className={styles.img} src={userSvg} alt="User"/>
                 </button>
                 <span className={styles.username}>{username}</span>
@@ -62,17 +73,17 @@ const Authorization = () =>  {
             </div>)
             :
             (<div>
-                <Button text = {"Sign In"} cb = {() => {setShowBlock(!showBlock)}}/>
+                <Button text = {"Sign In"} cb = {() => {showModal(true)}}/>
                 {   showBlock ?
                         showSignIn ? 
                             <SignIn
                                 showBlock = {showBlock}
-                                setShowBlock = {setShowBlock}
+                                showModal = {showModal}
                                 setShowSignIn = {setShowSignIn}
                             />
                             :<Registration
                                 showBlock = {showBlock}
-                                setShowBlock = {setShowBlock}
+                                showModal = {showModal}
                                 setShowSignIn = {setShowSignIn}
                             />
                     : ""

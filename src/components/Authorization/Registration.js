@@ -6,7 +6,7 @@ import styles from "./SignInRegister.module.css"
 
 const Registration = (props) =>  {
 
-    const { showBlock, setShowBlock, setShowSignIn } = props
+    const { showBlock, showModal, setShowSignIn } = props
 
     const { FirebaseApp } = useContext(ContentData)
     const auth = getAuth(FirebaseApp);
@@ -39,7 +39,7 @@ const Registration = (props) =>  {
     }
 
     const reset = () => {
-        setShowBlock(false);
+        showModal(false);
         setShowSignIn(true);
         setEmail("");
         setPassword("");
@@ -84,7 +84,7 @@ const Registration = (props) =>  {
             <div className={styles.block}>
                 <div className={styles.header}>
                     <h2 className={styles.title}>Registration</h2>
-                    <span className={styles.close} onClick={() => {setShowBlock(false); setShowSignIn(true)}}>&times;</span>
+                    <span className={styles.close} onClick={() => {showModal(false); setShowSignIn(true)}}>&times;</span>
                 </div>
                 <div className={styles.body}>
                     <form className={styles.form}>
@@ -107,17 +107,17 @@ const Registration = (props) =>  {
                 </div>
                 <div className={styles.footer}>
                     <button className={`${styles.btn} ${styles.submit}`} onClick={ClickRegister}>Submit</button>
-                    <button className={`${styles.btn} ${styles.btnClose}`} onClick={() => {setShowBlock(false); setShowSignIn(true)}}>Close</button>
+                    <button className={`${styles.btn} ${styles.btnClose}`} onClick={() => {showModal(false); setShowSignIn(true)}}>Close</button>
                 </div>
             </div>
-            <div className={styles.bg} onClick={() => {setShowBlock(false); setShowSignIn(true)}}></div>
+            <div className={styles.bg} onClick={() => {showModal(false); setShowSignIn(true)}}></div>
         </div>
     );
 }
 
 Registration.propTypes = {
     showBlock : PropTypes.bool,
-    setShowBlock : PropTypes.func,
+    showModal : PropTypes.func,
     setShowSignIn : PropTypes.func,
 }
 
