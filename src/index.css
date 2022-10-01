@@ -119,6 +119,14 @@ section {
   }
 }
 
+@media screen and (max-width: 900px) {
+  
+  .new-block {
+    padding: 20px 70px;
+    gap: 30px;
+}
+}
+
 @media screen and (max-width: 750px) {
 
   .section-content {
