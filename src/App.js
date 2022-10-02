@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import About from './pages/About';
-import { ApiKeyShop, ApiKeyFirebase } from "./config"
+import { ApiKeyShop, ApiFirebaseConfig } from "./config"
 
 function App() {
 
@@ -52,19 +52,8 @@ function App() {
       fetchData();
     }
   },[dataContent.length]);
-
-  const firebaseConfig = {
-    apiKey: ApiKeyFirebase,
-    authDomain: "react-shop-c619c.firebaseapp.com",
-    projectId: "react-shop-c619c",  
-    storageBucket: "react-shop-c619c.appspot.com",
-    messagingSenderId: "299913024289",
-    appId: "1:299913024289:web:a7c2e49b4ad801c6206460",
-    measurementId: "G-DPH3L9K5BH"
   
-  };
-  
-  const FirebaseApp = initializeApp(firebaseConfig);
+  const FirebaseApp = initializeApp(ApiFirebaseConfig);
 
   return (
     <div>
